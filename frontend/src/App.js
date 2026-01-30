@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './pages/Navbar';
 import Home from './pages/Home';
 import AdminPage from './pages/AdminPage';
 import UserPage from './pages/UserPage';
@@ -13,7 +13,7 @@ function App() {
         <div className="text-center mb-4">
           <h1 className="fw-bold">📖 Library Management</h1>
           <p className="text-muted">
-            Aplikasi Manajemen Buku – UCP PAW
+            Aplikasi Manajemen Buku 
           </p>
         </div>
 
@@ -21,7 +21,7 @@ function App() {
         <Navbar />
 
         {/* CONTENT */}
-        <div className="card shadow-sm">
+        <div className="card shadow-sm border-0">
           <div className="card-body">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -34,7 +34,7 @@ function App() {
         {/* FOOTER */}
         <footer className="text-center text-muted mt-4">
           <small>
-            © 2026 Library UCP • Praktikum PAW
+            © 2026 Library 
           </small>
         </footer>
 
