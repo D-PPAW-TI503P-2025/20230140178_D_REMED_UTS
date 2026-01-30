@@ -118,14 +118,14 @@
 ---
 
 ## ❗ Error Authorisasi
-![Error Author](ssan/error-author.png)
+![Error Author](ssan/eror-author.png)
 
 ---
 
 ## ❗ Error Peminjaman Buku
-![Error Pinjam Buku](ssan/error-pinjam-buku.png)
+![Error Pinjam Buku](ssan/eror-pinjam-buku.png)
 
 ---
 
 ## ❗ Error Title
-![Error Title](ssan/error-title.png)
+![Error Title](ssan/eror-title.png)
