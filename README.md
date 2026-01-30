@@ -128,4 +128,4 @@
 ---
 
 ## ❗ Error Title
-![Error Title](ssan/eror-title.png)
+![Error Title](ssan/error-title.png)
