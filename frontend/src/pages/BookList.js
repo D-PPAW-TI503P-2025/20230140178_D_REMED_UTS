@@ -14,9 +14,6 @@ function BookList({ role = 'user' }) {
     onConfirm: null
   });
 
-  // ======================
-  // MODAL HANDLER
-  // ======================
   const showModal = (type, title, message, onConfirm = null) => {
     setModal({
       show: true,
@@ -34,10 +31,6 @@ function BookList({ role = 'user' }) {
       onConfirm: null
     }));
   };
-
-  // ======================
-  // LOAD BOOKS
-  // ======================
   const loadBooks = useCallback(async () => {
     try {
       setLoading(true);
@@ -58,9 +51,6 @@ function BookList({ role = 'user' }) {
     loadBooks();
   }, [loadBooks]);
 
-  // ======================
-  // USER: PINJAM BUKU
-  // ======================
   const handleBorrow = async (book) => {
     if (book.stock < 1) {
       return showModal(
@@ -92,9 +82,6 @@ function BookList({ role = 'user' }) {
     }
   };
 
-  // ======================
-  // ADMIN: HAPUS BUKU
-  // ======================
   const confirmDelete = (book) => {
     showModal(
       'warning',

@@ -3,17 +3,15 @@
 const { Book } = require('../models');
 
 module.exports = {
-  // GET /api/books
   async getAll(req, res, next) {
     try {
       const books = await Book.findAll();
       return res.status(200).json(books);
     } catch (err) {
-      next(err); // lempar ke global error handler
+      next(err); 
     }
   },
 
-  // GET /api/books/:id
   async getById(req, res, next) {
     try {
       const book = await Book.findByPk(req.params.id);
@@ -30,12 +28,10 @@ module.exports = {
     }
   },
 
-  // POST /api/books (admin)
   async create(req, res, next) {
     try {
       const { title, author, stock } = req.body;
 
-      // VALIDASI
       if (!title || title.trim() === '') {
         return res.status(400).json({
           message: 'Title is required and cannot be empty'
@@ -66,7 +62,6 @@ module.exports = {
     }
   },
 
-  // PUT /api/books/:id (admin)
   async update(req, res, next) {
     try {
       const book = await Book.findByPk(req.params.id);
@@ -79,7 +74,6 @@ module.exports = {
 
       const { title, author, stock } = req.body;
 
-      // VALIDASI
       if (!title || title.trim() === '') {
         return res.status(400).json({
           message: 'Title is required and cannot be empty'
@@ -110,7 +104,6 @@ module.exports = {
     }
   },
 
-  // DELETE /api/books/:id (admin)
   async remove(req, res, next) {
     try {
       const book = await Book.findByPk(req.params.id);

@@ -3,7 +3,6 @@
 const { Book, BorrowLog, sequelize } = require('../models');
 
 module.exports = {
-  // POST /api/borrow
   async borrowBook(req, res, next) {
     const transaction = await sequelize.transaction();
 
@@ -11,7 +10,6 @@ module.exports = {
       const role = req.headers['x-user-role'];
       const userId = req.headers['x-user-id'];
 
-      // VALIDASI ROLE
       if (!role) {
         await transaction.rollback();
         return res.status(401).json({
@@ -26,7 +24,6 @@ module.exports = {
         });
       }
 
-      // VALIDASI USER ID
       if (!userId) {
         await transaction.rollback();
         return res.status(400).json({
@@ -36,7 +33,6 @@ module.exports = {
 
       const { bookId, latitude, longitude } = req.body;
 
-      // VALIDASI BODY
       if (!bookId) {
         await transaction.rollback();
         return res.status(400).json({
@@ -58,7 +54,6 @@ module.exports = {
         });
       }
 
-      // CEK BUKU
       const book = await Book.findByPk(bookId, { transaction });
 
       if (!book) {
@@ -68,7 +63,6 @@ module.exports = {
         });
       }
 
-      // CEK STOK
       if (book.stock < 1) {
         await transaction.rollback();
         return res.status(400).json({
@@ -76,13 +70,11 @@ module.exports = {
         });
       }
 
-      // KURANGI STOK
       await book.update(
         { stock: book.stock - 1 },
         { transaction }
       );
 
-      // SIMPAN LOG PEMINJAMAN
       const borrowLog = await BorrowLog.create({
         userId: Number(userId),
         bookId,
@@ -100,7 +92,7 @@ module.exports = {
 
     } catch (err) {
       await transaction.rollback();
-      next(err); // ⬅️ lempar ke global error handler
+      next(err); 
     }
   }
 };

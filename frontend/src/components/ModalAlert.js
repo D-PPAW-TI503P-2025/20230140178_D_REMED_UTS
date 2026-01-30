@@ -44,7 +44,7 @@ function ModalAlert({
                 Batal
               </button>
 
-              {/* 🔥 MUNCUL HANYA JIKA KONFIRMASI */}
+              {/* MUNCUL JIKA KONFIRMASI */}
               {onConfirm && (
                 <button
                   className={`btn btn-${confirmVariant}`}

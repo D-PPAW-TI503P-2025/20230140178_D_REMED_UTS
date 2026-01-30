@@ -1,8 +1,5 @@
 const BASE_URL = 'http://localhost:3001/api';
 
-/* ======================
-   HELPER RESPONSE
-====================== */
 async function handleResponse(res) {
   let data;
   try {
@@ -18,17 +15,11 @@ async function handleResponse(res) {
   return data;
 }
 
-/* ======================
-   BOOK (PUBLIC)
-====================== */
 export async function getBooks() {
   const res = await fetch(`${BASE_URL}/books`);
   return handleResponse(res);
 }
 
-/* ======================
-   BOOK (ADMIN)
-====================== */
 export async function addBook(data) {
   const res = await fetch(`${BASE_URL}/books`, {
     method: 'POST',
@@ -57,9 +48,6 @@ export async function deleteBook(id) {
   return handleResponse(res);
 }
 
-/* ======================
-   BORROW (USER)
-====================== */
 export async function borrowBook(bookId) {
   const res = await fetch(`${BASE_URL}/borrow`, {
     method: 'POST',
